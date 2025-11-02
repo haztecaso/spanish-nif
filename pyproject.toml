@@ -1,0 +1,102 @@
+[project]
+name = "spanish-nif"
+version = "0.1.0"
+description = "Pydantic validators for spanish identification codes: NIF, DNI and NIE."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name="Adrián Lattes", email="adrianlattes@disroot.org"},
+]
+dependencies = [
+    "pydantic>=2.12.3",
+]
+classifiers=[
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Natural Language :: English",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "black>=25.9.0",
+    "commitizen>=4.9.1",
+    "flake8>=7.3.0",
+    "isort>=7.0.0",
+    "pre-commit>=4.3.0",
+    "pyright>=1.1.407",
+]
+test = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+]
+docs = [
+    "markdown-include>=0.8.1",
+    "mkdocs>=1.6.1",
+    "mkdocs-autolinks-plugin>=0.7.1",
+    "mkdocs-git-revision-date-localized-plugin>=1.5.0",
+    "mkdocs-htmlproofer-plugin>=1.4.0",
+    "mkdocs-include-markdown-plugin>=7.2.0",
+    "mkdocs-material>=9.6.23",
+    "mkdocs-minify-plugin>=0.8.0",
+    "mkdocs-section-index>=0.3.10",
+    "mkdocstrings>=0.30.1",
+    "mkdocstrings-python>=1.18.2",
+]
+
+[tool.coverage.report]
+exclude_also = [
+    'pragma: no cover',
+    'def __repr__',
+    'raise NotImplementedError',
+    'if TYPE_CHECKING:',
+    'class .*\bProtocol\):',
+    '@(abc\.)?abstractmethod',
+]
+omit = [ "*/.local/*", "/usr/*", "/nix/store/*" ]
+
+[tool.commitizen]
+version_provider = "uv"
+tag_format =  "v${version}"
+version_scheme = "semver"
+update_changelog_on_bump = true
+version_files = [
+  "pyproject.toml:version",
+  "src/spanish_nif/version.py",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py310', 'py311', 'py312', 'py313']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  # The following are specific to Black, you probably don't want those.
+  | blib2to3
+  | tests/data
+  | profiling
+)/
+'''
+
+[tool.isort]
+profile = "black"
+src_paths = ["src", "test"]
