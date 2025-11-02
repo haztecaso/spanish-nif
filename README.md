@@ -1,48 +1,36 @@
 # spanish-nif
 
-<div align="center">
-<em>Pydantic validators for spanish identification codes: NIF, DNI and NIE.</em>
-</div>
+*Pydantic validators for spanish identification codes: NIF, DNI and NIE.*
 
+[![test badge](https://github.com/haztecaso/spanish-nif/actions/workflows/test.yml/badge.svg)](https://github.com/haztecaso/spanish-nif/actions/workflows/test.yml)
+[![Supported Python versions](https://img.shields.io/badge/python-3.10_%7C_3.11_%7C_3.12_%7C_3.13-blue?labelColor=grey&color=blue)](https://github.com/haztecaso/spanish-nif/blob/main/pyproject.toml)
+[![PyPI version](https://img.shields.io/pypi/v/spanish-nif.svg)](https://pypi.org/project/spanish-nif)
+[![Static Badge](https://img.shields.io/badge/Documentation-2B8AE2)](https://haztecaso.github.io/spanish-nif)
 
-<div align="center">
-<a href="https://github.com/haztecaso/spanish-nif/actions/workflows/test.yml" target="_blank">
-    <img src="https://github.com/haztecaso/spanish-nif/actions/workflows/test.yml/badge.svg" alt="test badge" />
-</a>
-<a href="https://github.com/haztecaso/spanish-nif/blob/main/pyproject.toml">
-<img src="https://img.shields.io/badge/python-3.10_%7C_3.11_%7C_3.12_%7C_3.13-blue?labelColor=grey&color=blue" alt="Supported Python versions"/>
-</a>
-<a href="https://pypi.org/project/spanish-nif/" target="_blank">
-    <img src="https://img.shields.io/pypi/v/spanish-nif.svg" alt="PyPI version" />
-</a>
-</div>
-
-[**Documentation**](https://haztecaso.github.io/spanish-nif)
-
----
-
-> ⚠️ **AI-generated library:** This library may contain severe vulnerabilities
-> and should not be trusted for critical workflows. Use at your own risk; it was
-> produced with the Codex AI assistant.
+[//]: # (start)
 
 This library turns Spanish identification numbers into first-class Python types.
 Each class (`NIF`, `DNI`, `NIE`) subclasses `str`, validates its control letter on
 construction, and plugs straight into [Pydantic](https://docs.pydantic.dev/) so you can drop it into your
 data models without writing bespoke validators.
 
+> ⚠️ **AI-generated library:** This library may contain severe vulnerabilities
+> and should not be trusted for critical workflows. Use at your own risk; it was
+> produced with the Codex AI assistant.
+
 ## Installation
 
-- **pip**
+### pip
 
-  ```bash
-  python -m pip install spanish-nif
-  ```
+```bash
+python -m pip install spanish-nif
+```
 
-- **uv**
+### uv
 
-  ```bash
-  uv pip install spanish-nif
-  ```
+```bash
+uv pip install spanish-nif
+```
 
 ## Quick examples
 

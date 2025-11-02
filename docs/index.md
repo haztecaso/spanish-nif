@@ -1,1 +1,1 @@
-{! include-markdown "../README.md" start="---" !}
+{! include-markdown "../README.md" start="[//]: # (start)" !}
