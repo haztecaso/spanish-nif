@@ -67,3 +67,11 @@ assert tax_payer.nif == "12345678Z"
 
 * Invalid inputs raise an `InvalidIdentification` subclass with a helpful message.
 * Normalisation uppercases the value and validates the control-letter sequence; inputs must already be correctly formatted.
+
+## Related Projects
+
+- [validarnif](https://pypi.org/project/validarnif/) – Python module exposing procedural validators for NIF/NIE/CIF and optional preprocessing utilities; _spanish-nif_ instead wraps those rules in reusable string subclasses with Pydantic/JSON Schema integration.
+- [spanish-dni](https://pypi.org/project/spanish-dni/) – Python package with validator functions and generators focused on list processing; our library prioritises strong typing and schema metadata for application models.
+- [spain-id](https://www.npmjs.com/package/spain-id) – TypeScript/Node toolkit validating NIF/NIE/CIF in browser and server environments, whereas _spanish-nif_ targets Python workflows.
+- [ulabox/nif-validator](https://packagist.org/packages/ulabox/nif-validator) – PHP utility offering static `isValid*` helpers for CIF, DNI and NIE; our package emphasises typed models and Pydantic interoperability rather than imperative checks.
+- [criptalia/spanish_dni_validator](https://github.com/criptalia/spanish_dni_validator) – Go port of the ulabox/NIF validator covering DNI, NIE and CIF with `IsValid*` helpers; _spanish-nif_ instead provides Python string subclasses with declarative Pydantic integration.
