@@ -7,6 +7,9 @@ repo_name: haztecaso/spanish-nif
 
 theme:
   name: material
+  icon:
+    logo: fontawesome/solid/id-card
+  favicon: assets/favicon.svg
   palette:
     - scheme: default
       primary: indigo
