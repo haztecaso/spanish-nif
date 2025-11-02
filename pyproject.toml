@@ -1,6 +1,6 @@
 [project]
 name = "spanish-nif"
-version = "0.3.0"
+version = "0.3.1"
 description = "Pydantic validators for spanish identification codes: NIF, DNI and NIE."
 readme = "README.md"
 requires-python = ">=3.10"
