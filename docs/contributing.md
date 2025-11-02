@@ -1,4 +1,4 @@
-So you've started using `spanish_nif` and want to show your
+So you've started using `spanish-nif` and want to show your
 gratitude to the project, depending on your programming skills there are
 different ways to do so.
 
@@ -6,26 +6,26 @@ different ways to do so.
 
 There are several ways you can contribute:
 
-- [Open an issue](https://github.com/haztecaso/spanish_nif/issues/new) if you encounter
+- [Open an issue](https://github.com/haztecaso/spanish-nif/issues/new) if you encounter
     any bug or to let us know if you want a new feature to be implemented.
 - Spread the word about the program.
-- Review the [documentation](https://haztecaso.github.io/spanish_nif) and try to improve
+- Review the [documentation](https://haztecaso.github.io/spanish-nif) and try to improve
     it.
 
 # I know how to program in Python
 
 If you have some python knowledge there are some additional ways to contribute.
-We've ordered the [issues](https://github.com/haztecaso/spanish_nif/issues) in
-[milestones](https://github.com/haztecaso/spanish_nif/milestones), check the issues in
+We've ordered the [issues](https://github.com/haztecaso/spanish-nif/issues) in
+[milestones](https://github.com/haztecaso/spanish-nif/milestones), check the issues in
 the smaller one, as it's where we'll be spending most of our efforts. Try the
 [good first
-issues](https://github.com/haztecaso/spanish_nif/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22),
+issues](https://github.com/haztecaso/spanish-nif/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22),
 as they are expected to be easier to get into the project.
 
 We develop the program with
 [TDD](https://en.wikipedia.org/wiki/Test-driven_development), so we expect any
 contribution to have it's associated tests. We also try to maintain an updated
-[documentation](https://haztecaso.github.io/spanish_nif) of the project, so think if
+[documentation](https://haztecaso.github.io/spanish-nif) of the project, so think if
 your contribution needs to update it.
 
 We know that the expected code quality is above average. Therefore it might
@@ -41,7 +41,7 @@ don't let this fact discourage you from contributing:
 
 Questions, feature requests and bug reports are all welcome as issues.
 **To report a security vulnerability, please see our [security
-policy](https://github.com/haztecaso/spanish_nif/security/policy) instead.**
+policy](https://github.com/haztecaso/spanish-nif/security/policy) instead.**
 
 To make it as simple as possible for us to help you, please include the output
 of the following call in your issue:
@@ -50,12 +50,12 @@ of the following call in your issue:
 uv run src/spanish_nif/version.py
 ```
 
-Please try to always include the above unless you're unable to install `spanish_nif` or know it's not relevant to your question or
+Please try to always include the above unless you're unable to install `spanish-nif` or know it's not relevant to your question or
 feature request.
 
 # Pull Requests
 
-*spanish_nif* is released regularly so you should see your
+*spanish-nif* is released regularly so you should see your
 improvements release in a matter of days or weeks.
 
 !!! note
@@ -63,7 +63,7 @@ improvements release in a matter of days or weeks.
     issue to discuss the change before creating a pull request.
 
 If you're looking for something to get your teeth into, check out the ["help
-wanted"](https://github.com/haztecaso/spanish_nif/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
+wanted"](https://github.com/haztecaso/spanish-nif/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
 label on github.
 
 # Development facilities
@@ -77,8 +77,8 @@ nix package manager is also recommended.
 * Clone your fork and go into the repository directory:
 
     ```bash
-    git clone git@github.com:<your username>/spanish_nif.git
-    cd spanish_nif
+    git clone git@github.com:<your username>/spanish-nif.git
+    cd spanish-nif
     ```
 
 * Set up the virtualenv for running tests:
@@ -94,7 +94,7 @@ nix package manager is also recommended.
     git checkout -b my-new-feature-branch
     ```
 
-* Fix formatting and imports: spanish_nif uses
+* Fix formatting and imports: spanish-nif uses
     [black](https://github.com/ambv/black) to enforce formatting and
     [isort](https://github.com/timothycrosley/isort) to fix imports.
 
@@ -126,6 +126,6 @@ nix package manager is also recommended.
 * Commit, push, and create your pull request.
 
 * Make a new release: To generate the changelog of the new changes, build the
-    package, upload to pypi and clean the build files use `make bump`.
+    package, upload to pypi and clean the build files use `cz bump`.
 
-We'd love you to contribute to *spanish_nif*!
+We'd love you to contribute to *spanish-nif*!

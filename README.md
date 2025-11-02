@@ -1,16 +1,16 @@
-# spanish_nif
+# spanish-nif
 
 <div align="center">
 <em>Pydantic validators for spanish identification codes: NIF, DNI and NIE.</em>
 </div>
 
 <div align="center">
-<a href="https://github.com/haztecaso/spanish_nif/actions/workflows/test.yml" target="_blank">
-    <img src="https://github.com/haztecaso/spanish_nif/actions/workflows/test.yml/badge.svg" alt="test badge">
+<a href="https://github.com/haztecaso/spanish-nif/actions/workflows/test.yml" target="_blank">
+    <img src="https://github.com/haztecaso/spanish-nif/actions/workflows/test.yml/badge.svg" alt="test badge">
 </a>
 </div>
 
-[**Documentation**](https://haztecaso.github.io/spanish_nif)
+[**Documentation**](https://haztecaso.github.io/spanish-nif)
 
 ---
 

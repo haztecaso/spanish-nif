@@ -1,9 +1,9 @@
-site_name: spanish_nif
+site_name: spanish-nif
 site_description: "Pydantic validators for spanish identification codes: NIF, DNI and NIE."
 site_author: Adrián Lattes
 
-repo_url: https://github.com/haztecaso/spanish_nif
-repo_name: haztecaso/spanish_nif
+repo_url: https://github.com/haztecaso/spanish-nif
+repo_name: haztecaso/spanish-nif
 
 theme:
   name: material
