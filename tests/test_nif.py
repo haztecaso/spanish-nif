@@ -14,7 +14,7 @@ class _NIFModel(BaseModel):
     "value, variant",
     [
         ("12345678z", "dni"),
-        ("k0867756n", "legacy"),
+        ("k0867756n", "klm"),
         ("X1234567l", "nie"),
     ],
 )
@@ -30,10 +30,10 @@ def test_nif_digits_number_letter_properties():
     assert standard.number == 12345678
     assert standard.letter == "Z"
 
-    legacy = NIF("K0867756N")
-    assert legacy.digits == "0867756"
-    assert legacy.number == 867756
-    assert legacy.letter == "N"
+    klm_variant = NIF("K0867756N")
+    assert klm_variant.digits == "0867756"
+    assert klm_variant.number == 867756
+    assert klm_variant.letter == "N"
 
     nie_variant = NIF("Y1234567X")
     assert nie_variant.digits == NIE._prefix_map["Y"] + "1234567"
@@ -79,14 +79,14 @@ def test_nif_random_generates_expected_variants():
     rng = random.Random(2025)
     dni = NIF.random(rng, variant="dni")
     nie = NIF.random(rng, variant="nie")
-    legacy = NIF.random(rng, variant="legacy")
+    klm = NIF.random(rng, variant="klm")
 
     assert dni == NIF("74860229J")
     assert dni.variant == "dni"
     assert nie == NIF("X8012902R")
     assert nie.variant == "nie"
-    assert legacy == NIF("K8879991J")
-    assert legacy.variant == "legacy"
+    assert klm == NIF("K8879991J")
+    assert klm.variant == "klm"
 
 
 def test_nif_random_with_implicit_variant_is_reproducible():
@@ -97,7 +97,7 @@ def test_nif_random_with_implicit_variant_is_reproducible():
         NIF("23587774D"),
         NIF("84619151N"),
     ]
-    assert {value.variant for value in values} == {"dni", "nie", "legacy"}
+    assert {value.variant for value in values} == {"dni", "nie", "klm"}
 
 
 def test_nif_random_rejects_unknown_variant():

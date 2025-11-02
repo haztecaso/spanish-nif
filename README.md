@@ -39,7 +39,7 @@ from spanish_nif import DNI, NIE, NIF
 
 DNI("12345678Z")          # returns a validated DNI string
 NIE.is_valid("X1234567L") # -> True
-NIF("K0867756N").variant  # -> "legacy"
+NIF("K0867756N").variant  # -> "klm"
 ```
 
 ```python
@@ -47,7 +47,7 @@ from spanish_nif import DNI, NIF
 
 fresh_dni = DNI.random()
 some_nif = NIF.random()          # variant chosen automatically
-legacy_nif = NIF.random(variant="legacy")
+klm_nif = NIF.random(variant="klm")
 ```
 
 ```python

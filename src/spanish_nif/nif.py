@@ -19,14 +19,14 @@ class NIF(PydanticStringID):
     """Validated Spanish NIF string.
 
     This covers natural-person identifiers: standard DNI numbers, NIE numbers
-    (foreign residents), and legacy prefixes K/L/M.
+    (foreign residents), and K/L/M prefixes.
     """
 
     json_pattern = r"^(?:\d{8}|[KLMXYZ]\d{7})[A-Z]$"
     json_examples = ["12345678Z", "K0867756N", "X1234567L"]
     json_description = (
         "Número de Identificación Fiscal for natural persons. Accepts DNI, NIE, "
-        "and legacy K/L/M prefixes."
+        "and K/L/M prefixes."
     )
 
     _klm_pattern = re.compile(r"^([KLM])(\d{7})([A-Z])$")
@@ -44,11 +44,11 @@ class NIF(PydanticStringID):
             rng: Optional pseudo-random generator to use. Defaults to the
                 module-level :mod:`random` functions.
             variant: Optional variant selector: ``"dni"``, ``"nie"`` or
-                ``"legacy"``. When omitted a variant is chosen uniformly.
+                ``"klm"``. When omitted a variant is chosen uniformly.
         """
 
         generator = rng if rng is not None else random.Random()
-        chosen_variant = (variant or generator.choice(("dni", "nie", "legacy"))).lower()
+        chosen_variant = (variant or generator.choice(("dni", "nie", "klm"))).lower()
 
         if chosen_variant == "dni":
             return cls(str(DNI.random(rng=generator)))
@@ -56,13 +56,13 @@ class NIF(PydanticStringID):
         if chosen_variant == "nie":
             return cls(str(NIE.random(rng=generator)))
 
-        if chosen_variant == "legacy":
+        if chosen_variant == "klm":
             prefix = generator.choice(("K", "L", "M"))
             digits = f"{generator.randint(0, 9_999_999):07d}"
             letter = DNI._control_letters[int(digits) % 23]
             return cls(f"{prefix}{digits}{letter}")
 
-        raise ValueError("variant must be one of 'dni', 'nie', or 'legacy' if provided")
+        raise ValueError("variant must be one of 'dni', 'nie', or 'klm' if provided")
 
     @classmethod
     def _normalize(cls, value: Any) -> str:
@@ -82,7 +82,7 @@ class NIF(PydanticStringID):
         except InvalidDNI:
             pass
 
-        # Legacy K/L/M prefixes (7 digits + letter)
+        # K/L/M prefixes (7 digits + letter)
         match = cls._klm_pattern.fullmatch(normalized)
         if match:
             _, digits, letter = match.groups()
@@ -91,19 +91,17 @@ class NIF(PydanticStringID):
                 raise InvalidNIF(f"Invalid NIF control letter; expected {expected}")
             return normalized
 
-        raise InvalidNIF(
-            "NIF must correspond to a valid DNI, NIE, or legacy K/L/M format"
-        )
+        raise InvalidNIF("NIF must correspond to a valid DNI, NIE, or K/L/M format")
 
     @property
     def variant(self) -> str:
-        """Return the identifier variant: ``dni``, ``nie`` or ``legacy``."""
+        """Return the identifier variant: ``dni``, ``nie`` or ``klm``."""
 
         prefix = self[0]
         if prefix in "XYZ":
             return "nie"
         if prefix in "KLM":
-            return "legacy"
+            return "klm"
         return "dni"
 
     @property
@@ -113,7 +111,7 @@ class NIF(PydanticStringID):
         if self.variant == "nie":
             numeric = NIE._prefix_map[self[0]] + self[1:8]
             return numeric
-        if self.variant == "legacy":
+        if self.variant == "klm":
             return self[1:8]
         return self[:8]
 
