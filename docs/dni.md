@@ -40,6 +40,20 @@ except InvalidDNI as error:
     print(error)
 ```
 
+### Generating Sample DNIs
+
+Use `DNI.random()` when you need valid placeholders for fixtures or demos:
+
+```python
+from spanish_nif import DNI
+
+dni = DNI.random()
+assert len(dni) == 9
+assert dni.isupper()
+```
+
+Pass a `random.Random` instance only when you need reproducible sequences.
+
 ## Official References
 
 - [Real Decreto 1553/2005, de 23 de diciembre, por el que se regula la expedición del Documento Nacional de Identidad](https://www.boe.es/eli/es/rd/2005/12/23/1553/con) — el artículo 11 fija que el DNI incorpora el número del NIF como ocho dígitos más la letra de control.

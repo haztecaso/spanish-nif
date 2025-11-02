@@ -55,6 +55,14 @@ NIF("K0867756N").variant  # -> "legacy"
 ```
 
 ```python
+from spanish_nif import DNI, NIF
+
+fresh_dni = DNI.random()
+some_nif = NIF.random()          # variant chosen automatically
+legacy_nif = NIF.random(variant="legacy")
+```
+
+```python
 from pydantic import BaseModel
 from spanish_nif import NIF
 
@@ -67,6 +75,7 @@ assert tax_payer.nif == "12345678Z"
 
 * Invalid inputs raise an `InvalidIdentification` subclass with a helpful message.
 * Normalisation uppercases the value and validates the control-letter sequence; inputs must already be correctly formatted.
+* Need dummy data for tests or demos? Each class exposes a `.random()` helper; pass a `random.Random` instance only if you require deterministic output.
 
 ## Related Projects
 

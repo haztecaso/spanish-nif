@@ -1,3 +1,5 @@
+import random
+
 import pytest
 from pydantic import BaseModel, ValidationError
 
@@ -47,3 +49,9 @@ def test_pydantic_rejects_invalid_nie():
     with pytest.raises(ValidationError) as excinfo:
         _NIEModel.model_validate({"nie": "Z1234567A"})
     assert "Invalid NIE control letter" in str(excinfo.value)
+
+
+def test_nie_random_generates_reproducible_values():
+    rng = random.Random(42)
+    values = [NIE.random(rng) for _ in range(3)]
+    assert values == [NIE("Z1867825T"), NIE("X4614226N"), NIE("X3744854V")]

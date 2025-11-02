@@ -46,6 +46,22 @@ if not NIF.is_valid("12345678A"):
     print("Control letter mismatch")
 ```
 
+### Generating Sample NIFs
+
+`NIF.random()` builds valid identifiers for tests and demos and lets you pin the
+variant you need:
+
+```python
+from spanish_nif import NIF
+
+some_nif = NIF.random()               # variant picked automatically
+legacy_nif = NIF.random(variant="legacy")
+assert legacy_nif[0] in {"K", "L", "M"}
+```
+
+Supply a `random.Random` instance if you need deterministic output (for example,
+inside test suites).
+
 ## Official References
 
 - [Real Decreto 1065/2007, de 27 de julio, por el que se aprueba el Reglamento General de las actuaciones y los procedimientos de gestión e inspección tributaria](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2007-15017) — el artículo 18 concreta la composición del número de identificación fiscal para personas físicas.

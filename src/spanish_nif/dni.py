@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import random
 import re
 from typing import Any
 
@@ -30,6 +31,16 @@ class DNI(PydanticStringID):
 
     def __new__(cls, value: str) -> "DNI":
         return super().__new__(cls, cls._normalize(value))
+
+    @classmethod
+    def random(cls, rng: random.Random | None = None) -> "DNI":
+        """Return a random, valid DNI instance."""
+
+        generator = rng if rng is not None else random.Random()
+        number = generator.randint(0, 9_999_9999)
+        digits = f"{number:08d}"
+        letter = cls._control_letters[number % 23]
+        return cls(f"{digits}{letter}")
 
     @classmethod
     def _normalize(cls, value: Any) -> str:

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import random
 import re
 from typing import Any
 
@@ -32,6 +33,36 @@ class NIF(PydanticStringID):
 
     def __new__(cls, value: Any) -> "NIF":
         return super().__new__(cls, value)
+
+    @classmethod
+    def random(
+        cls, rng: random.Random | None = None, *, variant: str | None = None
+    ) -> "NIF":
+        """Return a random, valid NIF instance.
+
+        Args:
+            rng: Optional pseudo-random generator to use. Defaults to the
+                module-level :mod:`random` functions.
+            variant: Optional variant selector: ``"dni"``, ``"nie"`` or
+                ``"legacy"``. When omitted a variant is chosen uniformly.
+        """
+
+        generator = rng if rng is not None else random.Random()
+        chosen_variant = (variant or generator.choice(("dni", "nie", "legacy"))).lower()
+
+        if chosen_variant == "dni":
+            return cls(str(DNI.random(rng=generator)))
+
+        if chosen_variant == "nie":
+            return cls(str(NIE.random(rng=generator)))
+
+        if chosen_variant == "legacy":
+            prefix = generator.choice(("K", "L", "M"))
+            digits = f"{generator.randint(0, 9_999_999):07d}"
+            letter = DNI._control_letters[int(digits) % 23]
+            return cls(f"{prefix}{digits}{letter}")
+
+        raise ValueError("variant must be one of 'dni', 'nie', or 'legacy' if provided")
 
     @classmethod
     def _normalize(cls, value: Any) -> str:

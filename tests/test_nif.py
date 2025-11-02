@@ -1,3 +1,5 @@
+import random
+
 import pytest
 from pydantic import BaseModel, ValidationError
 
@@ -71,3 +73,33 @@ def test_nif_accepts_existing_dni_and_nie_instances():
 
     nif_from_nie = NIF(NIE("X1234567L"))
     assert nif_from_nie.variant == "nie"
+
+
+def test_nif_random_generates_expected_variants():
+    rng = random.Random(2025)
+    dni = NIF.random(rng, variant="dni")
+    nie = NIF.random(rng, variant="nie")
+    legacy = NIF.random(rng, variant="legacy")
+
+    assert dni == NIF("74860229J")
+    assert dni.variant == "dni"
+    assert nie == NIF("X8012902R")
+    assert nie.variant == "nie"
+    assert legacy == NIF("K8879991J")
+    assert legacy.variant == "legacy"
+
+
+def test_nif_random_with_implicit_variant_is_reproducible():
+    rng = random.Random(314)
+    values = [NIF.random(rng) for _ in range(10)]
+    assert values[:3] == [
+        NIF("61243151Q"),
+        NIF("23587774D"),
+        NIF("84619151N"),
+    ]
+    assert {value.variant for value in values} == {"dni", "nie", "legacy"}
+
+
+def test_nif_random_rejects_unknown_variant():
+    with pytest.raises(ValueError):
+        NIF.random(variant="foobar")

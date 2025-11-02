@@ -46,6 +46,20 @@ if not NIE.is_valid("x1234567l"):  # uppercased internally, so this returns True
     raise RuntimeError("Unexpected validation failure")
 ```
 
+### Generating Sample NIEs
+
+The `NIE.random()` helper returns valid identifiers for fixtures and demos:
+
+```python
+from spanish_nif import NIE
+
+nie = NIE.random()
+assert nie[0] in {"X", "Y", "Z"}
+assert len(nie) == 9
+```
+
+For reproducible sequences, provide your own `random.Random` instance.
+
 ## Official References
 
 - [Orden INT/2058/2008, de 14 de julio, sobre determinados documentos de identidad y de viaje](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2008-12076) — el anexo II detalla la estructura del NIE, los prefijos `X/Y/Z` y la letra de control.

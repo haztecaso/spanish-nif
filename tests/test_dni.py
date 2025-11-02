@@ -1,3 +1,5 @@
+import random
+
 import pytest
 from pydantic import BaseModel, ValidationError
 
@@ -46,3 +48,9 @@ def test_pydantic_rejects_invalid_dni():
     with pytest.raises(ValidationError) as excinfo:
         _DNIModel.model_validate({"dni": "12345678A"})
     assert "Invalid DNI control letter" in str(excinfo.value)
+
+
+def test_dni_random_generates_reproducible_values():
+    rng = random.Random(1234)
+    values = [DNI.random(rng) for _ in range(3)]
+    assert values == [DNI("59154128Z"), DNI("15683411X"), DNI("01005488C")]
