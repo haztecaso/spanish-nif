@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-and-publish:
@@ -19,7 +19,7 @@ jobs:
       url: https://pypi.org/project/spanish-nif/
     permissions:
       id-token: write
-      contents: read
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -38,7 +38,19 @@ jobs:
         run: |
           uv build --no-sources
 
+      - name: Generate release notes
+        run: |
+          uv run --group dev cz changelog --dry-run --unreleased-version "${{ github.ref_name }}" > RELEASE_NOTES.md
+
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: dist
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.whl
+            dist/*.tar.gz
+          body_path: RELEASE_NOTES.md
