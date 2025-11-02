@@ -45,3 +45,8 @@ assert nie.number == 1234567  # numeric value used for the control-letter calcul
 if not NIE.is_valid("x1234567l"):  # uppercased internally, so this returns True
     raise RuntimeError("Unexpected validation failure")
 ```
+
+## Official References
+
+- [Orden INT/2058/2008, de 14 de julio, sobre determinados documentos de identidad y de viaje](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2008-12076) — el anexo II detalla la estructura del NIE, los prefijos `X/Y/Z` y la letra de control.
+- [Agencia Tributaria: Número de Identidad de Extranjero (NIE)](https://sede.agenciatributaria.gob.es/Sede/ayuda/normativas-criterios-interpretativos/normativa/no-tributaria/numero-identificacion-extranjero.html) — guía oficial sobre asignación y composición del NIE.

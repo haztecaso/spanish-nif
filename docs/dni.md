@@ -39,3 +39,7 @@ try:
 except InvalidDNI as error:
     print(error)
 ```
+
+## Official References
+
+- [Real Decreto 1553/2005, de 23 de diciembre, por el que se regula la expedición del Documento Nacional de Identidad](https://www.boe.es/eli/es/rd/2005/12/23/1553/con) — el artículo 11 fija que el DNI incorpora el número del NIF como ocho dígitos más la letra de control.

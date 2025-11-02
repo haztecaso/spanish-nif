@@ -45,3 +45,9 @@ assert nif.letter == "N"
 if not NIF.is_valid("12345678A"):
     print("Control letter mismatch")
 ```
+
+## Official References
+
+- [Real Decreto 1065/2007, de 27 de julio, por el que se aprueba el Reglamento General de las actuaciones y los procedimientos de gestión e inspección tributaria](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2007-15017) — el artículo 18 concreta la composición del número de identificación fiscal para personas físicas.
+- [Orden EHA/451/2008, de 20 de febrero, por la que se regula el número de identificación fiscal](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2008-3580) — establece los códigos y caracteres de control para personas jurídicas y otros sujetos.
+- [Agencia Tributaria: Número de identificación fiscal (NIF)](https://sede.agenciatributaria.gob.es/Sede/ayuda/normativas-criterios-interpretativos/normativa/no-tributaria/numero-identificacion-fiscal.html) — resumen oficial sobre la asignación y estructura del NIF según el tipo de contribuyente.
