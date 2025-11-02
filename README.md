@@ -25,9 +25,17 @@ data models without writing bespoke validators.
 
 ## Installation
 
-```bash
-python -m pip install spanish-nif
-```
+- **pip**
+
+  ```bash
+  python -m pip install spanish-nif
+  ```
+
+- **uv**
+
+  ```bash
+  uv pip install spanish-nif
+  ```
 
 ## Quick examples
 
