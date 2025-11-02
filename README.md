@@ -4,9 +4,16 @@
 <em>Pydantic validators for spanish identification codes: NIF, DNI and NIE.</em>
 </div>
 
+
 <div align="center">
 <a href="https://github.com/haztecaso/spanish-nif/actions/workflows/test.yml" target="_blank">
-    <img src="https://github.com/haztecaso/spanish-nif/actions/workflows/test.yml/badge.svg" alt="test badge">
+    <img src="https://github.com/haztecaso/spanish-nif/actions/workflows/test.yml/badge.svg" alt="test badge" />
+</a>
+<a href="https://github.com/haztecaso/spanish-nif/blob/main/pyproject.toml">
+<img src="https://img.shields.io/badge/python-3.10_%7C_3.11_%7C_3.12_%7C_3.13-blue?labelColor=grey&color=blue" alt="Supported Python versions"/>
+</a>
+<a href="https://pypi.org/project/spanish-nif/" target="_blank">
+    <img src="https://img.shields.io/pypi/v/spanish-nif.svg" alt="PyPI version" />
 </a>
 </div>
 
